@@ -126,8 +126,9 @@ should return `[1,2]`.
 [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
 should return 3.
  */
-
-
+function processDuplicateFree(list, callback) {
+  return callback(Array.from(new Set(list)));
+}
 // function processDuplicateFree(list, callback) {
 // 	const noDupes = list.filter((a, b) => list.indexOf(a) === b);
 // 	return callback(noDupes);
@@ -198,8 +199,8 @@ function lowerCaseStrings(strings) {
 */
 // function isItAnApple(/* code here */) {
   function isItAnApple(strings) {
-    const apple = strings.map(array => array === 'apple');
-    return apple;
+    //const apple = strings.map(array => array === 'apple');
+    return strings.map(array => array === 'apple');
   }
 
 /**
@@ -220,8 +221,9 @@ function lowerCaseStrings(strings) {
 */
 // function removeApple(/* code here */) {
   function removeApple(strings) {
-    const removeApple = strings.filter(apple => apple != 'apple');
-    return removeApple
+    // const removeApple = strings.filter(apple => apple != 'apple');
+    // return removeApple
+    return strings.filter(apple => apple != 'apple');
     }
 
 /**
@@ -239,10 +241,14 @@ function lowerCaseStrings(strings) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
-  /* code here */
+function stringSmash(strings) {
+  // const smash = strings.reduce((total, string) => total + string);
+  // return smash
+// }  // Fix this ^^
+return strings.reduce((string, start) => {
+  return string += start
+}, []);
 }
-
 // A local community center is holding a fund raising 5k fun run and has invited
 // 50 small businesses to make a small donation on their behalf for some much needed
 // updates to their facilities. Each business has assigned a representative
@@ -258,8 +264,10 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+    return runners.map (person => {
+    return `${person.last_name}, ${person.first_name}`
+    });
 }
 
 /**
@@ -274,8 +282,10 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  return runners.map(name => {
+     return name.first_name.toUpperCase()
+  });
 }
 
 /**
@@ -292,8 +302,9 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+// function getRunnersByTShirtSize(/* CODE HERE */) {
+  function getRunnersByTShirtSize(runners, tShirtSize) {
+    return runners.filter(shirt => shirt.shirt_size === tShirtSize);
 }
 
 /**
@@ -307,8 +318,10 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  return runners.reduce((total, people) => {
+    return total += people.donation
+  }, 0)
 }
 
 /////////////// CLOSURES ///////////////
@@ -321,6 +334,7 @@ function tallyUpDonations(/* CODE HERE */) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ * Need to come back to this.
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
