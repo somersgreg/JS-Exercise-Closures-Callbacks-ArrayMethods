@@ -265,7 +265,13 @@ function getFullNames(runners) {
 function firstNamesAllCaps(/* CODE HERE */) {
   /* CODE HERE */
 }
-
+function firstNamesAllCaps(runners) {
+  const newMapArray = [];
+runners.map(function(runner) {
+  return newMapArray.push(runner.first_name.toUpperCase());
+});
+return newMapArray;
+}
 /**
  * ### Challenge `getRunnersByTShirtSize`
  * * THIS IS A STRETCH PROBLEM! ATTEMPT ONLY AFTER COMPLETING ALL NON-STRETCH CHALLENGES!
